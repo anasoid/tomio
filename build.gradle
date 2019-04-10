@@ -9,12 +9,59 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+	id "io.spring.dependency-management"     version "1.0.6.RELEASE"
+	id "org.sonarqube" version "2.7"
+    id "net.ossindex.audit" version "0.4.10"
 }
 
+
+allprojects {
+   apply plugin: 'java'
+   apply plugin: "jacoco"
+   apply plugin: 'checkstyle'
+   apply plugin: 'pmd'
+   apply plugin: 'maven-publish'
+   apply plugin: 'maven'
+   apply plugin: "jacoco"
+   apply plugin: "net.ossindex.audit"
+	
+	group = 'org.anasoid.tomio'
+	sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+   
+   
+    
+	
+	jacoco {
+        toolVersion = '0.8.3'
+    }
+
+	     checkstyle {
+
+        configFile = rootProject.file('config/checkstyle/google_checks.xml')
+        toolVersion "8.19"
+        ignoreFailures =true
+        maxErrors = 0
+        maxWarnings = 0
+
+     }
+     pmd {
+            consoleOutput = true
+
+        }
+
+	
+	ext.gradleScriptDir = "${rootProject.projectDir}/gradle"
+	apply from: "${gradleScriptDir}/ide.gradle"
+	
+	
+}
+
+	
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
+
     jcenter()
+	mavenCentral()
 }
 
 dependencies {

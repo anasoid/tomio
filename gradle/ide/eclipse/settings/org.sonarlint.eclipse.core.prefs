@@ -1,0 +1,6 @@
+autoEnabled=true
+eclipse.preferences.version=1
+extraProperties=
+moduleKey=org.anasoid.tomio
+projectKey=org.anasoid.tomio
+serverId=SonarCloud/anasoid
