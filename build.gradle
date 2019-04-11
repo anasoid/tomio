@@ -40,7 +40,7 @@ allprojects {
 
         configFile = rootProject.file('config/checkstyle/google_checks.xml')
         toolVersion "8.19"
-        ignoreFailures =true
+        ignoreFailures =false
         maxErrors = 0
         maxWarnings = 0
 

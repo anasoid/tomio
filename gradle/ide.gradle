@@ -7,7 +7,7 @@ eclipse.jdt {
 }
 
 eclipse.project {
-  	natures 'org.springsource.ide.eclipse.gradle.core.nature'
+  	natures 'org.eclipse.buildship.core.gradleprojectnature'
 }
 
 // Include project specific settings
