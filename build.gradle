@@ -11,7 +11,7 @@ plugins {
     id 'java-library'
 	id "io.spring.dependency-management"     version "1.0.7.RELEASE"
 	id "org.sonarqube" version "2.7"
-    id "net.ossindex.audit" version "0.4.10"
+    id "net.ossindex.audit" version "0.4.11"
 }
 
 
