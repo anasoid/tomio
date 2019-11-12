@@ -9,7 +9,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
-	id "io.spring.dependency-management"     version "1.0.6.RELEASE"
+	id "io.spring.dependency-management"     version "1.0.7.RELEASE"
 	id "org.sonarqube" version "2.7"
     id "net.ossindex.audit" version "0.4.10"
 }
@@ -33,20 +33,22 @@ allprojects {
     
 	
 	jacoco {
-        toolVersion = '0.8.3'
+        toolVersion = '0.8.5'
     }
 
 	     checkstyle {
 
         configFile = rootProject.file('config/checkstyle/google_checks.xml')
-        toolVersion "8.19"
+        toolVersion "8.26"
         ignoreFailures =false
         maxErrors = 0
         maxWarnings = 0
 
      }
      pmd {
+            ignoreFailures =false
             consoleOutput = true
+            toolVersion= "6.8.0"
 
         }
 
@@ -65,11 +67,9 @@ repositories {
 }
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
 
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:27.0.1-jre'
+    compileOnly("org.apache.tomcat:tomcat-servlet-api:$tomcatVersion")
+    compileOnly("org.apache.tomcat:tomcat-catalina:$tomcatVersion")
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
